@@ -3,7 +3,7 @@ const modeloCliente = require('../models/cliente.model');
 exports.listar = async (req,res)=>{
   try {
     const clientes = await modeloCliente.find();
-    res.render('pages/index3', {clientes:clientes});
+    res.render('pages/clientes', {clientes:clientes});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -35,7 +35,7 @@ exports.registrar = async (req,res)=>{
         telefono: req.body.telefono
     }
     const clientes = await modeloCliente.insertOne(clienteNuevo);
-    res.render('pages/index3' ,{mensaje: "Registro exitoso!!"});
+    res.render('pages/clientes' ,{mensaje: "Registro exitoso!!"});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

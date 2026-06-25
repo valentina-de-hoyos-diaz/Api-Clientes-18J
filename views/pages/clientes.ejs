@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Nuestros Clientes</h1>
+            <table id="example" class="table table-striped text-center">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Acción</th>
+        
+                </thead>
+                <tbody>
+                    <% clientes.forEach(function(clientes) { %>
+                    <tr>
+                        <td><%= clientes.nombre %></td>
+                        <td><%= clientes.email %></td>
+                        <td><%= clientes.telefono %></td>
+                        <td>
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalVer" onclick="modalVer('<%=clientes.nombre%>', '<%= clientes.email%>','<%=clientes.telefono%>')">Ver detalle</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditar">Editar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                        </td>
+                        
+                    </tr>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="modalVer">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ver detalle de cliente</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="/api/v1/clientes" method="POST">
+                                    <div class="mb-3">  
+                                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombreV" aria-describedby="emailHelp" placeholder="Digita tu nombre" name="nombre" readonly >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="emailV" aria-describedby="emailHelp" placeholder="Digita tu email" name="email" readonly >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Telefono</label>
+                                        <input type="text" class="form-control" id="telV" aria-describedby="emailHelp" placeholder="Digita tu teléfono" name="telefono" readonly">
+                                    </div>
+
+                                    <input type="checkbox"><label for="">  Quiero recibir ofertas al correo</label><br><br>
+                                
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                                               <!-- modal editar-->
+
+                    <div id="modalEditar" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                    
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Detalles del cliente</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/api/v1/clientes" method="POST">
+                                        <div class="mb-3 mt-3">
+                                            <label for="name" class="form-label">Nombre:</label>
+                                            <input type="text" class="form-control" id="nombreE" placeholder="Nombre completo" name="nombrev">
+                                        </div>
+                                        <div class="mb-3 mt-3">
+                                            <label for="email" class="form-label">Email:</label>
+                                            <input type="email" class="form-control" id="emailE" placeholder="example@email.com"
+                                                name="email" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="number" class="form-label">Telefono:</label>
+                                            <input type="number" class="form-control" id="telefonoE" placeholder="312 3456789"
+                                                name="telefono">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+
+                    <% }); %>
+                </tbody>
+
+            </table>
+        </div>
+
+    
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+       <script>
+            function modalVer(nombre, email, telefono){
+            document.getElementById('modalVer').style.display = 'block';
+            document.getElementById('nombreV').value = nombre;
+            document.getElementById('emailV').value = email;
+            document.getElementById('telV').value = telefono;
+            
+            }
+
+
+            function modalEditar(nombre, email, telefono){
+            document.getElementById('modalEditar').style.display = 'block';
+            document.getElementById('nombreE').value = nombre;
+            document.getElementById('emailE').value = email;
+            document.getElementById('telE').value = telefono;
+            
+            }
+        </script>
+</body>
+</html>
