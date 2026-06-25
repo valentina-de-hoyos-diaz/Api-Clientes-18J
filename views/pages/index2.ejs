@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Nuestros productos</h1>
+            <table border="5px" class="table table-striped text-center">
+                <thead>
+                    <th>N°</th>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>Categoría</th>
+                    <th>Imagen</th>
+                </thead>
+                <tbody>
+                    <% productos.forEach(function(data) { %>
+                    <tr>
+                        <td><%= data.id %></td>
+                        <td><%= data.title %></td>
+                        <td>$<%= data.price %></td>
+                        <td><%= data.description %></td>
+                        <td><%= data.category %></td>
+                        <td><img src=<%= data.image %> alt=<%= data.image %> width="80px"></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+
+            </table>
+            
+            <!-- <ul>
+                <% productos.forEach(function(data) { %>
+                    <li>
+                        <strong>Producto: </strong><%= data.title %>
+                        <strong>Precio: </strong> <%= data.price %>, <strong>Categoría: </strong><%= data.category %>
+                    </li>
+                <% }); %>
+            </ul> -->
+        </div>
+    
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+
+</body>
+</html>

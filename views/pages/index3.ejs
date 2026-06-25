@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Nuestros Clientes</h1>
+            <table id="example" class="table table-striped text-center">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+        
+                </thead>
+                <tbody>
+                    <% clientes.forEach(function(clientes) { %>
+                    <tr>
+                        <td><%= clientes.nombre %></td>
+                        <td><%= clientes.email %></td>
+                        <td><%= clientes.telefono %></td>
+                
+                    </tr>
+                    <% }); %>
+                </tbody>
+
+            </table>
+        </div>
+    
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+
+</body>
+</html>
