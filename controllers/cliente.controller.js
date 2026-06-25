@@ -9,6 +9,14 @@ exports.listar = async (req,res)=>{
   }
 }
 
+exports.formulario = async (req,res)=>{
+  try {
+    const clientes = await modeloCliente.find();
+    res.render('pages/form', {mensaje: ""});
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
 // exports.registrar = async (req,res)=>{
 //   try {
 //     const clientes = await modeloCliente.insertOne();
@@ -20,13 +28,14 @@ exports.listar = async (req,res)=>{
 
 exports.registrar = async (req,res)=>{
   try {
+    console.log(req.body)
     let clienteNuevo ={
         nombre: req.body.nombre,
         email: req.body.email,
         telefono: req.body.telefono
     }
     const clientes = await modeloCliente.insertOne(clienteNuevo);
-    res.render('pages/form');
+    res.render('pages/index3' ,{mensaje: "Registro exitoso!!"});
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -11,19 +11,21 @@
 
     <main>
         
-       <form>
-            <div class="mb-3">
+       <form action="/api/v1/clientes" method="POST">
+            <div class="mb-3"><label><%=mensaje%></label> 
                 <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Digita tu nombre" name="nombre">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Digita tu email" name="email">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Telefono</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="telefono" aria-describedby="emailHelp" placeholder="Digita tu teléfono" name="telefono">
             </div>
+
+            <input type="checkbox"><label for=""> Quiero recibir ofertas al correo</label><br><br>
            
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

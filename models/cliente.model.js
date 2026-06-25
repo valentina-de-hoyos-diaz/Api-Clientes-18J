@@ -6,4 +6,4 @@ const clienteSchema = new mongoose.Schema({
   telefono: { type: String }
 },{versionKey:false});
 
-module.exports = mongoose.model('clientes', clienteSchema);
+module.exports = mongoose.model('clientes', clienteSchema); 
