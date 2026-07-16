@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .login-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    .login-box img {
+      width: 180px;
+      margin-bottom: 1rem;
+    }
+    .login-box input {
+      margin-bottom: 1rem;
+    }
+    #error-msg {
+      color: red;
+      display: none;
+      margin-bottom: 0.5rem;
+    }
+    .botoncito {
+      padding: 0.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <img src="/img/flor.png" alt="Flor">
+      <h3 class="mb-3">Iniciar sesión</h3>
+      <input type="text" id="usuario" class="form-control" placeholder="Usuario">
+      <input type="password" id="password" class="form-control" placeholder="Contraseña">
+      <p id="error-msg">Usuario o contraseña incorrectos</p>
+      <button class="btn botoncito w-100" onclick="login()">Ingresar</button>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById('usuario').value;
+      const pass = document.getElementById('password').value;
+      if (user === '123' && pass === 'val123') {
+        sessionStorage.setItem('loggedIn', 'true');
+        window.location.href = '/api/v1/clientes';
+      } else {
+        document.getElementById('error-msg').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

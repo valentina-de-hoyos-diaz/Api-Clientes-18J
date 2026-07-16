@@ -34,8 +34,8 @@ exports.registrar = async (req,res)=>{
         email: req.body.email,
         telefono: req.body.telefono
     }
-    const clientes = await modeloCliente.insertOne(clienteNuevo);
-    res.render('pages/clientes' ,{mensaje: "Registro exitoso!!"});
+    await modeloCliente.insertOne(clienteNuevo);
+    res.redirect('/api/v1/clientes');
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

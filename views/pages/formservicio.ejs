@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <h1>Registrar Servicio</h1>
+       <form action="/api/v1/servicios" method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Digita el nombre" name="nombre">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="descripcion" placeholder="Digita la descripción" name="descripcion">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Duración (minutos)</label>
+                <input type="number" class="form-control" id="duracionMinutos" placeholder="Digita la duración" name="duracionMinutos">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Precio</label>
+                <input type="number" class="form-control" id="precio" placeholder="Digita el precio" name="precio">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Categoría</label>
+                <select class="form-control" name="categoria">
+                    <option value="">Selecciona una categoría</option>
+                    <option value="corte">Corte</option>
+                    <option value="tintura">Tintura</option>
+                    <option value="peinado">Peinado</option>
+                    <option value="tratamiento">Tratamiento</option>
+                    <option value="barberia">Barbería</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+                <button type="submit" class="btn botoncito">Enviar</button>
+
+        </form>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>

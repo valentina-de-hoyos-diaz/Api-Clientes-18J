@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Nuestros Usuarios</h1>
+            <table id="example" class="table table-striped text-center">
+                <thead>
+                    <th>Email</th>
+                    <th>Rol</th>
+        
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user) { %>
+                    <tr>
+                        <td><%= user.email %></td>
+                        <td><%= user.rol %></td>
+                        <td>
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalVer" onclick="modalVer('<%=user.email%>','<%=user.rol%>')">Ver detalle</button>
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditar">Editar</button>
+                            <button type="button" class="btn btn-danger">Eliminar</button>
+                        </td>
+                        
+                    </tr>
+
+                    <!-- The Modal -->
+                    <div class="modal" id="modalVer">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ver detalle de cliente</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="/api/v1/clientes" method="POST">
+                                    <div class="mb-3">  
+                                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="emailV" aria-describedby="emailHelp" placeholder="Digita tu email" name="email" readonly >
+                                    </div>
+                                   
+                                    <div class="mb-3">
+                                        <label for="exampleInputEmail1" class="form-label">Rol</label>
+                                        <input type="text" class="form-control" id="rolV" aria-describedby="emailHelp" placeholder="Digita tu rol" name="rol" readonly>
+                                    </div>
+
+                                    <input type="checkbox"><label for="">  Quiero recibir ofertas al correo</label><br><br>
+                                
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                                               <!-- modal editar-->
+
+                    <div id="modalEditar" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                    
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Detalles del cliente</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/api/v1/clientes" method="POST">
+                                        <div class="mb-3 mt-3">
+                                            <label for="name" class="form-label">Email:</label>
+                                            <input type="text" class="form-control" id="emailE" placeholder="Nombre completo" name="email">
+                                        </div>
+                                      
+                                        <div class="mb-3">
+                                            <label for="number" class="form-label">Rol:</label>
+                                            <input type="number" class="form-control" id="rolE" placeholder="cliente"
+                                                name="rol">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+
+                    <% }); %>
+                </tbody>
+
+            </table>
+        </div>
+
+    
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+       <script>
+            function modalVer(email, password, rol){
+            document.getElementById('modalVer').style.display = 'block';
+            document.getElementById('emailV').value = nombre;
+            document.getElementById('rolV').value = telefono;
+            
+            }
+
+
+            function modalEditar(email, password, rol){
+            document.getElementById('modalEditar').style.display = 'block';
+            document.getElementById('nombreE').value = nombre;
+            document.getElementById('rolE').value = telefono;
+            
+            }
+        </script>
+</body>
+</html>

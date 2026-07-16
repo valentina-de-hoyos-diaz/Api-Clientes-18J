@@ -1,12 +1,12 @@
 {
-  "name": "node28may",
+  "name": "node20may",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api_node.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "start": "node api_node.js",
+    "dev": "nodemon api_node.js",
+    "test": "echo 'No hay tests todavía'",
     "build": "echo 'Construyendo'"
   },
   "keywords": [],
@@ -15,11 +15,8 @@
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^17.4.2",
-    "ejs": "^6.0.1",
     "express": "^5.2.1",
-    "mongoose": "^9.6.3",
-    "nodemailer": "^9.0.3",
-    "path": "^0.12.7"
+    "mongodb": "^7.2.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

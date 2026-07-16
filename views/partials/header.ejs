@@ -1,26 +1,7 @@
-<!-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
- <div class="container-fluid">
-   <a class="navbar-brand" href="#">Logo</a>
-   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-     <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-     <ul class="navbar-nav">
-       <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Clientes</a>
-         <ul class="dropdown-menu">
-           <li><a class="dropdown-item" href="form">Registrar</a></li>
-           <li><a class="dropdown-item" href="clientes">Listar</a></li>
-         </ul>
-       </li>
-     </ul>
-   </div>
- </div>
-</nav> -->
-
+<link rel="stylesheet" href="/css/style.css">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
  <div class="container-fluid">
-   <a class="navbar-brand" href="#">Logo</a>
+   <a class="navbar-brand" href="#"><img src="/img/flor.png" alt="flor" height="40px"></a>
    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
      <span class="navbar-toggler-icon"></span>
    </button>
@@ -36,19 +17,34 @@
        <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Productos</a>
          <ul class="dropdown-menu">
-       <li><a class="dropdown-item" href="#">Registrar</a></li>
-           <li><a class="dropdown-item" href="#">Listar</a></li>
+           <li><a class="dropdown-item" href="/api/v1/productos">Listar</a></li>
          </ul>
        </li>
        <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Servicios</a>
          <ul class="dropdown-menu">
-             <li><a class="dropdown-item" href="#">Registrar</a></li>
-           <li><a class="dropdown-item" href="#">Listar</a></li>
+           <li><a class="dropdown-item" href="/api/v1/formservicio">Registrar</a></li>
+           <li><a class="dropdown-item" href="/api/v1/servicios">Listar</a></li>
          </ul>
        </li>  
+       <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Usuarios</a>
+         <ul class="dropdown-menu">
+           <li><a class="dropdown-item" href="/api/v1/formusuario">Contactar</a></li>
+         </ul>
+       </li> 
      </ul>
-   </div>
- </div>
+      <div class="ms-auto">
+        <button class="btn botoncito" onclick="sessionStorage.clear(); window.location.href='/login'">
+          Cerrar sesión
+        </button>
+      </div>
+    </div>
+  </div>
 </nav>
 
+<script>
+  if (!sessionStorage.getItem('loggedIn')) {
+    window.location.href = '/login';
+  }
+</script>
